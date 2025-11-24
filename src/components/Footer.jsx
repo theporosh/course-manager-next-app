@@ -1,6 +1,7 @@
 // components/Footer.jsx
 import Link from "next/link";
-import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from "react-icons/fa";
+import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
+import { FaSquareXTwitter } from "react-icons/fa6";
 
 export default function Footer() {
     return (
@@ -23,7 +24,7 @@ export default function Footer() {
                         <h3 className="text-lg font-semibold text-white">Follow Us</h3>
                         <div className="flex space-x-4 mt-1">
                             <a href="#" className="hover:text-indigo-400"><FaFacebookF /></a>
-                            <a href="#" className="hover:text-indigo-400"><FaTwitter /></a>
+                            <a href="#" className="hover:text-indigo-400"><FaSquareXTwitter /></a>
                             <a href="#" className="hover:text-indigo-400"><FaInstagram /></a>
                             <a href="#" className="hover:text-indigo-400"><FaLinkedinIn /></a>
                         </div>

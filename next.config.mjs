@@ -2,6 +2,10 @@
 const nextConfig = {
   /* config options here */
   reactCompiler: true,
+
+  images: {
+    domains: ['i.ibb.co.com'],
+  },
 };
 
 export default nextConfig;

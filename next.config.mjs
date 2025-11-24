@@ -6,6 +6,9 @@ const nextConfig = {
   images: {
     domains: ['i.ibb.co.com'],
   },
+  images: {
+    domains: ['images.unsplash.com'],
+  },
 };
 
 export default nextConfig;

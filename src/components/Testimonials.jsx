@@ -22,7 +22,7 @@ const Testimonials = () => {
   return (
     <section className="py-16 bg-gray-50">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
+        <h2 className="text-3xl md:text-4xl font-bold text-center text-black mb-12">
           What Our Students Say
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -41,7 +41,7 @@ const Testimonials = () => {
                 />
               </div>
               <p className="text-gray-600 mb-4">{t.feedback}</p>
-              <h4 className="font-semibold">{t.name}</h4>
+              <h4 className="font-semibold text-black">{t.name}</h4>
             </div>
           ))}
         </div>

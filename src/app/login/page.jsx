@@ -2,9 +2,10 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { signIn } from "next-auth/react";
+// import { signIn } from "next-auth/react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import Link from "next/link";
+import { loginWithEmail, loginWithGoogle } from "@/lib/auth";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -12,17 +13,64 @@ export default function LoginPage() {
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
+  // demo login
+  // const handleLogin = async (e) => {
+  //   e.preventDefault();
+
+  //   // Demo: replace with your actual login logic
+  //   alert("Logged in successfully (demo)!");
+  //   router.push("/");
+  // };
+
+  //next auth login with email and password
+//   const handleLogin = async (e) => {
+//   e.preventDefault();
+
+//   const result = await signIn("credentials", {
+//     redirect: false,
+//     email,
+//     password,
+//   });
+
+//   if (result?.ok) {
+//     router.push("/");
+//   } else {
+//     alert("Invalid email or password");
+//   }
+// };
+
+
+  //next auth google login
+  // const handleGoogleLogin = async () => {
+  //   await signIn("google", { callbackUrl: "/" });
+  // };
+
+  // firebase Email/password login
   const handleLogin = async (e) => {
     e.preventDefault();
-
-    // Demo: replace with your actual login logic
-    alert("Logged in successfully (demo)!");
-    router.push("/");
+    try {
+      const user = await loginWithEmail(email, password);
+      console.log("Logged in user:", user);
+      router.push("/"); // Redirect after login
+    } catch (error) {
+      console.error(error);
+      alert(error.message || "Invalid email or password");
+    }
   };
 
+
+  //firebase google login
   const handleGoogleLogin = async () => {
-    await signIn("google", { callbackUrl: "/" });
-  };
+  try {
+    const user = await loginWithGoogle();
+    console.log("Logged in with Google:", user);
+    // Redirect user after login
+    router.push("/");
+  } catch (error) {
+    console.error("Google login failed:", error);
+    alert("Google login failed. Try again.");
+  }
+};
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">

@@ -5,6 +5,8 @@ import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import Link from "next/link";
+import { signup, loginWithGoogle } from "@/lib/auth";
+import { updateProfile } from "firebase/auth";
 
 export default function RegisterPage() {
     const router = useRouter();
@@ -28,33 +30,136 @@ export default function RegisterPage() {
         return "";
     };
 
+    // const handleRegister = async (e) => {
+    //     e.preventDefault();
+
+    //     const error = validatePassword(password);
+    //     if (error) {
+    //         setPasswordError(error);
+    //         return;
+    //     }
+
+    //     // Clear error if validation passed
+    //     setPasswordError("");
+
+    //     // Demo: Here you would normally call your backend to save the user
+    //     alert("Registered successfully (demo)!");
+    //     router.push("/auth/login");
+    // };
+
+
+
+
+    //old using fetch
+    // client-side register handler (inside your RegisterPage component)
+    // const handleRegister = async (e) => {
+    //     e.preventDefault();
+    //     const error = validatePassword(password);
+    //     if (error) {
+    //         setPasswordError(error);
+    //         return;
+    //     }
+    //     setPasswordError("");
+
+    //     const payload = { name, email, password, photo: photo || "" };
+
+    //     const res = await fetch("/api/auth/register", {
+    //         method: "POST",
+    //         headers: { "Content-Type": "application/json" },
+    //         body: JSON.stringify({
+    //             name,
+    //             email,
+    //             password,
+    //             photoURL: photo, // note key matches server
+    //         }),
+    //     });
+
+    //     const data = await res.json();
+    //     if (res.ok) {
+    //         // Auto sign in after register (optional)
+    //         const signInResult = await signIn("credentials", {
+    //             redirect: false,
+    //             email,
+    //             password,
+    //         });
+    //         if (signInResult?.ok) {
+    //             router.push("/");
+    //         } else {
+    //             // fallback: go to login
+    //             router.push("/auth/login");
+    //         }
+    //     } else {
+    //         alert(data.error || "Registration failed");
+    //     }
+    // };
+
+
+    // firebase register
     const handleRegister = async (e) => {
         e.preventDefault();
 
+        // Password validation
         const error = validatePassword(password);
         if (error) {
             setPasswordError(error);
             return;
         }
-
-        // Clear error if validation passed
         setPasswordError("");
 
-        // Demo: Here you would normally call your backend to save the user
-        alert("Registered successfully (demo)!");
-        router.push("/auth/login");
+        try {
+            // Firebase email/password signup
+            const userCredential = await signup(email, password);
+            const user = userCredential.user;
+
+            await updateProfile(user, {
+            displayName: name,
+            photoURL: photo || null,
+        });
+
+            // Update displayName & photoURL
+            // if (userCredential.user) {
+            //     await userCredential.user.updateProfile({
+            //         displayName: name,
+            //         photoURL: photo || null,
+            //     });
+            // }
+
+            alert("Registered successfully!");
+            // Redirect to home page
+            router.push("/");
+        } catch (err) {
+            console.error("Signup failed:", err);
+            alert(err.message || "Registration failed");
+        }
     };
 
+
+
+    // old nextauth google login
+    // const handleGoogleLogin = async () => {
+    //     await signIn("google", { callbackUrl: "/" });
+    // };
+
+
+    // firebase google register
     const handleGoogleLogin = async () => {
-        await signIn("google", { callbackUrl: "/" });
+        try {
+            const user = await loginWithGoogle();
+            console.log("Registered with Google:", user);
+            router.push("/"); // redirect to home
+        } catch (error) {
+            console.error("Google signup failed:", error);
+            alert("Google signup failed. Try again.");
+        }
     };
+
 
     return (
         <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
             <div className="bg-white p-8 rounded shadow-md w-full max-w-md">
                 {/* Header */}
                 <h1 className="text-3xl font-bold text-indigo-600 text-center">CourseManager </h1>
-                 <h1 className="text-3xl font-bold mt-2 text-black">Create Your First Account</h1>
+                <h1 className="text-3xl font-bold mt-2 text-black">Create Your First Account</h1>
                 <p className="text-center text-gray-500 mt-1 mb-6">Create your account and start learning today!</p>
 
                 {/* Register Form */}
@@ -77,7 +182,7 @@ export default function RegisterPage() {
                         onChange={(e) => setEmail(e.target.value)}
                         required
                     />
-                     <label className="block text-gray-600 font-medium mb-1">Photo URL</label>
+                    <label className="block text-gray-600 font-medium mb-1">Photo URL</label>
                     <input
                         type="text"
                         placeholder="Photo URL"
@@ -86,7 +191,7 @@ export default function RegisterPage() {
                         onChange={(e) => setPhoto(e.target.value)}
                     />
                     <div className="relative">
-                         <label className="block text-gray-600 font-medium mb-1">Password</label>
+                        <label className="block text-gray-600 font-medium mb-1">Password</label>
                         <input
                             type={showPassword ? "text" : "password"}
                             placeholder="Password"

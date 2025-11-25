@@ -1,11 +1,48 @@
 // components/Navbar.jsx
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
+import { listenAuthState, logout } from "@/lib/auth";
+import { useRouter } from "next/navigation";
 
-export default function Navbar({ user }) {
+export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
+    const [user, setUser] = useState(null);
+    const router = useRouter();
+
+    useEffect(() => {
+        const unsubscribe = listenAuthState((currentUser) => {
+            setUser(currentUser);
+        });
+        return () => unsubscribe();
+    }, []);
+
+    // const handleLogout = async () => {
+    //     await logout();
+    //     setUser(null);
+    //     setIsOpen(false);
+    // };
+
+//     const handleLogout = async () => {
+//   try {
+//     await logout(); // Firebase signOut
+//     setIsOpen(false); // Dropdown close
+//     // ✅ setUser(null) **optional**, because listener e already update hobe
+//   } catch (err) {
+//     console.error("Logout failed:", err);
+//   }
+// };
+
+const handleLogout = async () => {
+        try {
+            await logout(); // Firebase signOut
+            setIsOpen(false); // close dropdown
+            router.push("/login"); // redirect to login page
+        } catch (err) {
+            console.error("Logout failed:", err);
+        }
+    };
 
     return (
         <nav className="bg-white shadow sticky top-0 z-50">
@@ -52,7 +89,7 @@ export default function Navbar({ user }) {
                                         <Link href="/add-product" className="block px-4 py-2 hover:bg-gray-100">Add Product</Link>
                                         <Link href="/manage-products" className="block px-4 py-2 hover:bg-gray-100">Manage Products</Link>
                                         <Link href="/profile" className="block px-4 py-2 hover:bg-gray-100">Profile</Link>
-                                        <Link href="/logout" className="block px-4 py-2 hover:bg-gray-100">Logout</Link>
+                                        <button onClick={handleLogout} className="block px-4 py-2 hover:bg-gray-100">Logout</button>
                                     </div>
                                 )}
                             </div>
@@ -100,7 +137,7 @@ export default function Navbar({ user }) {
                             <Link href="/add-product" className="block px-3 py-2 rounded hover:bg-gray-100">Add Product</Link>
                             <Link href="/manage-products" className="block px-3 py-2 rounded hover:bg-gray-100">Manage Products</Link>
                             <Link href="/profile" className="block px-3 py-2 rounded hover:bg-gray-100">Profile</Link>
-                            <Link href="/logout" className="block px-3 py-2 rounded hover:bg-gray-100">Logout</Link>
+                            <button onClick={handleLogout} className="block px-3 py-2 rounded hover:bg-gray-100">Logout</button>
                         </>
                     )}
                 </div>

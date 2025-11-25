@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { signIn } from "next-auth/react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import Link from "next/link";
 import { signup, loginWithGoogle } from "@/lib/auth";
@@ -30,68 +29,6 @@ export default function RegisterPage() {
         return "";
     };
 
-    // const handleRegister = async (e) => {
-    //     e.preventDefault();
-
-    //     const error = validatePassword(password);
-    //     if (error) {
-    //         setPasswordError(error);
-    //         return;
-    //     }
-
-    //     // Clear error if validation passed
-    //     setPasswordError("");
-
-    //     // Demo: Here you would normally call your backend to save the user
-    //     alert("Registered successfully (demo)!");
-    //     router.push("/auth/login");
-    // };
-
-
-
-
-    //old using fetch
-    // client-side register handler (inside your RegisterPage component)
-    // const handleRegister = async (e) => {
-    //     e.preventDefault();
-    //     const error = validatePassword(password);
-    //     if (error) {
-    //         setPasswordError(error);
-    //         return;
-    //     }
-    //     setPasswordError("");
-
-    //     const payload = { name, email, password, photo: photo || "" };
-
-    //     const res = await fetch("/api/auth/register", {
-    //         method: "POST",
-    //         headers: { "Content-Type": "application/json" },
-    //         body: JSON.stringify({
-    //             name,
-    //             email,
-    //             password,
-    //             photoURL: photo, // note key matches server
-    //         }),
-    //     });
-
-    //     const data = await res.json();
-    //     if (res.ok) {
-    //         // Auto sign in after register (optional)
-    //         const signInResult = await signIn("credentials", {
-    //             redirect: false,
-    //             email,
-    //             password,
-    //         });
-    //         if (signInResult?.ok) {
-    //             router.push("/");
-    //         } else {
-    //             // fallback: go to login
-    //             router.push("/auth/login");
-    //         }
-    //     } else {
-    //         alert(data.error || "Registration failed");
-    //     }
-    // };
 
 
     // firebase register
@@ -112,17 +49,9 @@ export default function RegisterPage() {
             const user = userCredential.user;
 
             await updateProfile(user, {
-            displayName: name,
-            photoURL: photo || null,
-        });
-
-            // Update displayName & photoURL
-            // if (userCredential.user) {
-            //     await userCredential.user.updateProfile({
-            //         displayName: name,
-            //         photoURL: photo || null,
-            //     });
-            // }
+                displayName: name,
+                photoURL: photo || null,
+            });
 
             alert("Registered successfully!");
             // Redirect to home page
@@ -133,12 +62,6 @@ export default function RegisterPage() {
         }
     };
 
-
-
-    // old nextauth google login
-    // const handleGoogleLogin = async () => {
-    //     await signIn("google", { callbackUrl: "/" });
-    // };
 
 
     // firebase google register

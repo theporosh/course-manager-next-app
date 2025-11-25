@@ -1,0 +1,154 @@
+[
+  {
+    "id": 1,
+    "title": "Node.js API Development",
+    "description": "Build REST APIs using Node.js and Express. Learn routing, middleware, authentication, and connecting to databases. Explore real-world projects, error handling, and best practices for creating scalable and maintainable backend applications. Gain hands-on experience with Postman, JWT, and environment configuration for production-ready APIs.",
+    "image": "https://i.ibb.co.com/fzKF7JJH/mon1.webp",
+    "price": "$59",
+    "category": "Backend",
+    "duration": "6 weeks",
+    "level": "Intermediate",
+    "instructor": "John Doe",
+    "syllabus": [
+      "Introduction to Node.js",
+      "Express.js Basics",
+      "Routing & Middleware",
+      "Database Integration",
+      "Authentication & Authorization",
+      "Deploying APIs"
+    ]
+  },
+  {
+    "id": 2,
+    "title": "React Frontend Development",
+    "description": "Learn how to build interactive user interfaces using React. Master components, JSX, state management, hooks, routing, and API integration. Work on modern web development practices like responsive design, performance optimization, and code splitting. Create beautiful, dynamic, and maintainable frontends suitable for real-world applications.",
+    "image": "https://i.ibb.co.com/GQ5L7Lh7/mon2.webp",
+    "price": "$69",
+    "category": "Frontend",
+    "duration": "5 weeks",
+    "level": "Beginner",
+    "instructor": "Jane Smith",
+    "syllabus": [
+      "React Components",
+      "JSX & Props",
+      "State & Lifecycle",
+      "Hooks",
+      "Routing",
+      "API Integration"
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Fullstack Web Development",
+    "description": "Combine frontend and backend skills to build complete web applications using the MERN stack. Learn MongoDB, Express, React, and Node.js integration, authentication, and deployment strategies. Develop hands-on projects to understand the flow of data between client and server, API design, and modern fullstack architecture. Prepare for real-world web development tasks with practical examples.",
+    "image": "https://i.ibb.co.com/TDvzDJWr/mon3.jpg",
+    "price": "$99",
+    "category": "Fullstack",
+    "duration": "10 weeks",
+    "level": "Intermediate",
+    "instructor": "Alice Johnson",
+    "syllabus": [
+      "MongoDB & Mongoose",
+      "Express.js & Node.js",
+      "React Frontend",
+      "REST API Integration",
+      "Authentication & Authorization",
+      "Deployment"
+    ]
+  },
+  {
+    "id": 4,
+    "title": "UI/UX Design",
+    "description": "Design beautiful and user-friendly interfaces using Figma, Adobe XD, and design principles. Understand user research, wireframing, prototyping, typography, color theory, and accessibility. Learn to create designs that delight users and enhance user experience. Apply industry-standard techniques to build professional portfolios and hands-on UI/UX projects.",
+    "image": "https://i.ibb.co.com/60SnhRZs/mon4.jpg",
+    "price": "$49",
+    "category": "Design",
+    "duration": "4 weeks",
+    "level": "Beginner",
+    "instructor": "David Lee",
+    "syllabus": [
+      "Design Principles",
+      "Wireframing & Prototyping",
+      "Figma Basics",
+      "User Research",
+      "UI Elements & Typography",
+      "Portfolio Project"
+    ]
+  },
+  {
+    "id": 5,
+    "title": "Data Science with Python",
+    "description": "Analyze data, create models, and gain actionable insights using Python, Pandas, NumPy, and machine learning libraries. Learn data cleaning, visualization, statistical analysis, and building predictive models. Gain experience working on real datasets, understanding trends, and generating reports. Apply machine learning techniques and best practices to solve business problems and scientific challenges.",
+    "image": "https://i.ibb.co.com/whMJsFzZ/mon5.jpg",
+    "price": "$79",
+    "category": "Data Science",
+    "duration": "8 weeks",
+    "level": "Intermediate",
+    "instructor": "Emily Davis",
+    "syllabus": [
+      "Python Basics",
+      "Data Manipulation with Pandas",
+      "Data Visualization",
+      "Statistics & Probability",
+      "Machine Learning Basics",
+      "Projects"
+    ]
+  },
+  {
+    "id": 6,
+    "title": "Digital Marketing",
+    "description": "Master SEO, social media, content marketing, and advertising strategies to grow businesses online. Learn how to plan campaigns, optimize content, analyze performance, and increase engagement. Understand analytics, email marketing, Google Ads, and Facebook Ads to create results-driven campaigns. Build a strong digital marketing skillset applicable to startups, agencies, and personal brands.",
+    "image": "https://i.ibb.co.com/1t2Qg7Mh/mon6.jpg",
+    "price": "$39",
+    "category": "Marketing",
+    "duration": "3 weeks",
+    "level": "Beginner",
+    "instructor": "Michael Brown",
+    "syllabus": [
+      "SEO Fundamentals",
+      "Social Media Marketing",
+      "Google Ads & Facebook Ads",
+      "Content Strategy",
+      "Analytics & Reporting",
+      "Campaign Optimization"
+    ]
+  },
+  {
+    "id": 7,
+    "title": "Cloud Computing with AWS",
+    "description": "Learn the fundamentals of cloud computing using Amazon Web Services (AWS). Understand cloud architecture, EC2 instances, S3 storage, Lambda functions, and serverless deployment. Gain hands-on experience managing cloud resources, setting up networking, and implementing security best practices. Prepare for real-world cloud projects and AWS certifications.",
+    "image": "https://i.ibb.co.com/ZRMvcY47/mon7.jpg",
+    "price": "$79",
+    "category": "Cloud Computing",
+    "duration": "6 weeks",
+    "level": "Intermediate",
+    "instructor": "Sarah Connor",
+    "syllabus": [
+      "Introduction to Cloud Computing",
+      "AWS EC2 & S3",
+      "Serverless Architecture",
+      "Lambda Functions",
+      "Networking & Security",
+      "Deploying Applications"
+    ]
+  },
+  {
+    "id": 8,
+    "title": "Mobile App Development with Flutter",
+    "description": "Build cross-platform mobile applications using Flutter and Dart. Learn UI design, state management, API integration, and deploying apps to iOS and Android. Work on real-world projects to create fast, responsive, and visually appealing mobile applications. Understand best practices for performance optimization and app architecture.",
+    "image": "https://i.ibb.co.com/Tq89xr4P/mon8.jpg",
+    "price": "$69",
+    "category": "Mobile Development",
+    "duration": "5 weeks",
+    "level": "Beginner",
+    "instructor": "David Kim",
+    "syllabus": [
+      "Flutter & Dart Basics",
+      "Building Responsive UI",
+      "State Management",
+      "API Integration",
+      "Testing & Debugging",
+      "Deploying to iOS & Android"
+    ]
+  }
+]

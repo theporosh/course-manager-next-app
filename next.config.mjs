@@ -4,10 +4,7 @@ const nextConfig = {
   reactCompiler: true,
 
   images: {
-    domains: ['i.ibb.co.com'],
-  },
-  images: {
-    domains: ['images.unsplash.com'],
+    domains: ['i.ibb.co.com' , 'images.unsplash.com'],
   },
 };
 

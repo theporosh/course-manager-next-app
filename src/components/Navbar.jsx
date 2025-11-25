@@ -1,4 +1,3 @@
-// components/Navbar.jsx
 "use client";
 
 import { useEffect, useState } from "react";
@@ -18,21 +17,7 @@ export default function Navbar() {
         return () => unsubscribe();
     }, []);
 
-    // const handleLogout = async () => {
-    //     await logout();
-    //     setUser(null);
-    //     setIsOpen(false);
-    // };
 
-//     const handleLogout = async () => {
-//   try {
-//     await logout(); // Firebase signOut
-//     setIsOpen(false); // Dropdown close
-//     // ✅ setUser(null) **optional**, because listener e already update hobe
-//   } catch (err) {
-//     console.error("Logout failed:", err);
-//   }
-// };
 
 const handleLogout = async () => {
         try {
@@ -58,7 +43,7 @@ const handleLogout = async () => {
                     {/* Desktop Menu */}
                     <div className="hidden md:flex md:items-center md:space-x-6">
                         <Link href="/" className="hover:text-indigo-600 text-gray-500">Home</Link>
-                        <Link href="/courses" className="hover:text-indigo-600 text-gray-500">Courses</Link>
+                        <Link href="/items" className="hover:text-indigo-600 text-gray-500">Catalog</Link>
                         <Link href="/about" className="hover:text-indigo-600 text-gray-500">About</Link>
                         <Link href="/contact" className="hover:text-indigo-600 text-gray-500">Contact</Link>
 

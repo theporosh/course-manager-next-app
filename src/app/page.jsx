@@ -1,4 +1,4 @@
-import Courses from "@/components/Courses";
+import Course from "@/components/Course";
 import JoinNow from "@/components/JoinNow";
 import Features from "@/components/Features ";
 import Hero from "@/components/Hero";
@@ -12,7 +12,7 @@ export default function Home() {
       <div>
         <Hero></Hero>
         <Features></Features>
-        <Courses></Courses>
+        <Course></Course>
         <Testimonials></Testimonials>
         <JoinNow></JoinNow>
       </div>

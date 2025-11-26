@@ -34,7 +34,7 @@ export default function CourseDetailsPage() {
         <div className="max-w-5xl mx-auto p-6">
             <button
                 onClick={() => router.back()}
-                className="mb-6 px-4 py-2 bg-gray-200 rounded hover:bg-gray-300"
+                className="mb-6 px-4 py-2 bg-gray-300 rounded hover:bg-gray-500 font-bold"
             >
                 &larr; Back
             </button>

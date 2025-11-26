@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { listenAuthState, logout } from "@/lib/auth";
 import { useRouter } from "next/navigation";
+import Swal from "sweetalert2";
 
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
@@ -18,16 +19,50 @@ export default function Navbar() {
     }, []);
 
 
+    // logout without toast
+    // const handleLogout = async () => {
+    //     try {
+    //         await logout(); // Firebase signOut
+    //         setIsOpen(false); // close dropdown
+    //         router.push("/login"); // redirect to login page
+    //     } catch (err) {
+    //         console.error("Logout failed:", err);
+    //     }
+    // };
 
-const handleLogout = async () => {
+    // logout with toast
+    const handleLogout = async () => {
         try {
             await logout(); // Firebase signOut
-            setIsOpen(false); // close dropdown
-            router.push("/login"); // redirect to login page
+            setIsOpen(false);
+
+            Swal.fire({
+                icon: "success",
+                title: "Logged Out Successfully!",
+                toast: true,
+                position: "top-right",
+                showConfirmButton: false,
+                timer: 2000,
+                timerProgressBar: true,
+            });
+
+            router.push("/login");
         } catch (err) {
             console.error("Logout failed:", err);
+
+            Swal.fire({
+                icon: "error",
+                title: "Logout Failed!",
+                text: err.message || "Try again",
+                toast: true,
+                position: "top-right",
+                showConfirmButton: false,
+                timer: 2500,
+                timerProgressBar: true,
+            });
         }
     };
+
 
     return (
         <nav className="bg-white shadow sticky top-0 z-50">
@@ -45,7 +80,7 @@ const handleLogout = async () => {
                         <Link href="/" className="hover:text-indigo-600 text-gray-500">Home</Link>
                         <Link href="/items" className="hover:text-indigo-600 text-gray-500">Catalog</Link>
                         <Link href="/about" className="hover:text-indigo-600 text-gray-500">About</Link>
-                        <Link href="/contact" className="hover:text-indigo-600 text-gray-500">Contact</Link>
+                        <Link href="/contact" className="hover:text-indigo-600 text-gray-500">Support</Link>
 
                         {!user ? (
                             <>
@@ -108,9 +143,9 @@ const handleLogout = async () => {
             {isOpen && (
                 <div className="md:hidden px-2 pt-2 pb-3 space-y-1 bg-white border-t">
                     <Link href="/" className="block px-3 py-2 rounded hover:bg-gray-100">Home</Link>
-                    <Link href="/courses" className="block px-3 py-2 rounded hover:bg-gray-100">Courses</Link>
+                    <Link href="/items" className="block px-3 py-2 rounded hover:bg-gray-100">Catalog</Link>
                     <Link href="/about" className="block px-3 py-2 rounded hover:bg-gray-100">About</Link>
-                    <Link href="/contact" className="block px-3 py-2 rounded hover:bg-gray-100">Contact</Link>
+                    <Link href="/contact" className="block px-3 py-2 rounded hover:bg-gray-100">Support</Link>
 
                     {!user ? (
                         <>

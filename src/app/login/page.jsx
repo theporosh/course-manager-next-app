@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import Link from "next/link";
 import { loginWithEmail, loginWithGoogle } from "@/lib/auth";
+import Swal from "sweetalert2";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -14,31 +15,99 @@ export default function LoginPage() {
 
 
   // firebase Email/password login
+  // const handleLogin = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     const user = await loginWithEmail(email, password);
+  //     console.log("Logged in user:", user);
+  //     router.push("/"); // Redirect after login
+  //   } catch (error) {
+  //     console.error(error);
+  //     alert(error.message || "Invalid email or password");
+  //   }
+  // };
+
+  // firebase Email/password login with success toast
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
       const user = await loginWithEmail(email, password);
       console.log("Logged in user:", user);
+
+      Swal.fire({
+        icon: "success",
+        title: "Login Successful!",
+        toast: true,
+        position: "top-right",
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+      });
+
       router.push("/"); // Redirect after login
     } catch (error) {
       console.error(error);
-      alert(error.message || "Invalid email or password");
+
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: error.message || "Invalid email or password!",
+        toast: true,
+        position: "top-right",
+        showConfirmButton: false,
+        timer: 2500,
+        timerProgressBar: true,
+      });
     }
   };
 
 
   //firebase google login
+  // const handleGoogleLogin = async () => {
+  //   try {
+  //     const user = await loginWithGoogle();
+  //     console.log("Logged in with Google:", user);
+  //     // Redirect user after login
+  //     router.push("/");
+  //   } catch (error) {
+  //     console.error("Google login failed:", error);
+  //     alert("Google login failed. Try again.");
+  //   }
+  // };
+
+  //firebase google login with success toast
   const handleGoogleLogin = async () => {
     try {
       const user = await loginWithGoogle();
       console.log("Logged in with Google:", user);
-      // Redirect user after login
+
+      Swal.fire({
+        icon: "success",
+        title: "Logged in with Google!",
+        toast: true,
+        position: "top-right",
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+      });
+
       router.push("/");
     } catch (error) {
       console.error("Google login failed:", error);
-      alert("Google login failed. Try again.");
+
+      Swal.fire({
+        icon: "error",
+        title: "Google login failed",
+        text: error.message || "Try again!",
+        toast: true,
+        position: "top-right",
+        showConfirmButton: false,
+        timer: 2500,
+        timerProgressBar: true,
+      });
     }
   };
+
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">

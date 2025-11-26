@@ -6,6 +6,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import Link from "next/link";
 import { signup, loginWithGoogle } from "@/lib/auth";
 import { updateProfile } from "firebase/auth";
+import Swal from "sweetalert2";
 
 export default function RegisterPage() {
     const router = useRouter();
@@ -32,6 +33,39 @@ export default function RegisterPage() {
 
 
     // firebase register
+    // const handleRegister = async (e) => {
+    //     e.preventDefault();
+
+    //     // Password validation
+    //     const error = validatePassword(password);
+    //     if (error) {
+    //         setPasswordError(error);
+    //         return;
+    //     }
+    //     setPasswordError("");
+
+    //     try {
+    //         // Firebase email/password signup
+    //         const userCredential = await signup(email, password);
+    //         const user = userCredential.user;
+
+    //         await updateProfile(user, {
+    //             displayName: name,
+    //             photoURL: photo || null,
+    //         });
+
+    //         alert("Registered successfully!");
+    //         // Redirect to home page
+    //         router.push("/");
+    //     } catch (err) {
+    //         console.error("Signup failed:", err);
+    //         alert(err.message || "Registration failed");
+    //     }
+    // };
+
+
+
+    // firebase register with success toast
     const handleRegister = async (e) => {
         e.preventDefault();
 
@@ -53,28 +87,84 @@ export default function RegisterPage() {
                 photoURL: photo || null,
             });
 
-            alert("Registered successfully!");
-            // Redirect to home page
-            router.push("/");
+            Swal.fire({
+                icon: "success",
+                title: "Registration Successful!",
+                text: "Welcome to Course Manager",
+                toast: true,
+                position: "top-right",
+                showConfirmButton: false,
+                timer: 2000,
+                timerProgressBar: true,
+            });
+
+            router.push("/"); // redirect
         } catch (err) {
             console.error("Signup failed:", err);
-            alert(err.message || "Registration failed");
+
+            Swal.fire({
+                icon: "error",
+                title: "Registration Failed!",
+                text: err.message || "Try again",
+                toast: true,
+                position: "top-right",
+                showConfirmButton: false,
+                timer: 2500,
+                timerProgressBar: true,
+            });
         }
     };
+
 
 
 
     // firebase google register
+    // const handleGoogleLogin = async () => {
+    //     try {
+    //         const user = await loginWithGoogle();
+    //         console.log("Registered with Google:", user);
+    //         router.push("/"); // redirect to home
+    //     } catch (error) {
+    //         console.error("Google signup failed:", error);
+    //         alert("Google signup failed. Try again.");
+    //     }
+    // };
+
+
+    // firebase google register with success toast
     const handleGoogleLogin = async () => {
         try {
             const user = await loginWithGoogle();
             console.log("Registered with Google:", user);
+
+            Swal.fire({
+                icon: "success",
+                title: "Registration Successful!",
+                text: "You are now registered with Google",
+                toast: true,
+                position: "top-right",
+                showConfirmButton: false,
+                timer: 2000,
+                timerProgressBar: true,
+            });
+
             router.push("/"); // redirect to home
         } catch (error) {
             console.error("Google signup failed:", error);
-            alert("Google signup failed. Try again.");
+
+            Swal.fire({
+                icon: "error",
+                title: "Google Signup Failed!",
+                text: error.message || "Try again",
+                toast: true,
+                position: "top-right",
+                showConfirmButton: false,
+                timer: 2500,
+                timerProgressBar: true,
+            });
         }
     };
+
 
 
     return (

@@ -30,7 +30,7 @@ export default function CourseDetails() {
 
         const fetchCourse = async () => {
             try {
-                const res = await axios.get(`http://localhost:5000/user-courses/${id}`);
+                const res = await axios.get(`https://render-express-deployment-oo2h.onrender.com/user-courses/${id}`);
                 setCourse(res.data.data);
             } catch (err) {
                 console.error(err);
@@ -62,7 +62,7 @@ export default function CourseDetails() {
 
             {/* Course Info */}
             <h1 className="text-3xl font-bold mt-5">{course.title}</h1>
-            <p className="text-gray-600 mt-2">{course.shortDescription}</p>
+            <p className="text-gray-600 mt-2">{course.shortDesc}</p>
 
             {/* Meta Info */}
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-4 text-sm text-gray-700">
@@ -71,10 +71,13 @@ export default function CourseDetails() {
                 <p><strong>Duration:</strong> {course.duration}</p>
             </div>
 
+        
             {/* Full Description */}
             <div className="mt-6">
                 <h2 className="text-xl font-semibold">Full Description</h2>
-                <p className="text-gray-700 mt-2 leading-relaxed">{course.fullDescription}</p>
+                <p className="text-gray-700 mt-2 leading-relaxed">
+                    {course.fullDesc?.trim() || "This course provides comprehensive learning materials and practical examples to help you understand and apply the concepts effectively."}
+                </p>
             </div>
 
             {/* Tags */}
@@ -99,7 +102,7 @@ export default function CourseDetails() {
                 Added on: {new Date(course.createdAt).toLocaleDateString()}
             </p>
 
-             <button
+            <button
                 onClick={() => router.back()}
                 className="mb-6 mt-6 px-4 py-2 bg-gray-300 rounded hover:bg-gray-500 font-bold"
             >

@@ -15,7 +15,7 @@ export default function CourseDetailsPage() {
     useEffect(() => {
         if (!courseId) return;
 
-        fetch(`http://localhost:5000/items/${courseId}`)
+        fetch(`https://render-express-deployment-oo2h.onrender.com/items/${courseId}`)
             .then((res) => {
                 if (!res.ok) throw new Error("Network response not ok");
                 return res.json();

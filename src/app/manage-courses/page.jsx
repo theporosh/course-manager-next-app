@@ -13,7 +13,7 @@ export default function ManageCourses() {
 
     const loadCourses = async () => {
         try {
-            const res = await fetch("http://localhost:5000/user-courses");
+            const res = await fetch("https://render-express-deployment-oo2h.onrender.com/user-courses");
             const data = await res.json();
             setCourses(data.data || []);
         } catch (err) {
@@ -36,7 +36,7 @@ export default function ManageCourses() {
 
         if (!confirm.isConfirmed) return;
 
-        await fetch(`http://localhost:5000/user-courses/${id}`, {
+        await fetch(`https://render-express-deployment-oo2h.onrender.com/user-courses/${id}`, {
             method: "DELETE",
         });
 

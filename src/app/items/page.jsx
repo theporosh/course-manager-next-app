@@ -9,7 +9,7 @@ export default function ItemListPage() {
     const [category, setCategory] = useState("all");
 
     useEffect(() => {
-        fetch("http://localhost:5000/items")
+        fetch("https://render-express-deployment-oo2h.onrender.com/items")
             .then((res) => res.json())
             .then((data) => {
                 if (data.success) setItems(data.data);

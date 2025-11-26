@@ -35,7 +35,7 @@ export default function AddCourse() {
         };
 
         try {
-            await axios.post("http://localhost:5000/user-courses", newCourse);
+            await axios.post("https://render-express-deployment-oo2h.onrender.com/user-courses", newCourse);
             Swal.fire({
                 icon: "success",
                 title: "Course added!",

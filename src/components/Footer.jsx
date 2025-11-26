@@ -20,11 +20,11 @@ export default function Footer() {
 
                     {/* Links */}
                     <div className="flex flex-col space-y-2">
-                        <h3 className="text-lg font-semibold text-white">Quick Links</h3>
-                        <Link href="/" className="hover:text-indigo-400">Home</Link>
-                        <Link href="/courses" className="hover:text-indigo-400">Courses</Link>
-                        <Link href="/about" className="hover:text-indigo-400">About</Link>
-                        <Link href="/contact" className="hover:text-indigo-400">Contact</Link>
+                        <h3 className="text-lg font-semibold text-white">Community</h3>
+                        <Link href="/" className="hover:text-indigo-400">Learners</Link>
+                        <Link href="/" className="hover:text-indigo-400">Partners</Link>
+                        <Link href="/" className="hover:text-indigo-400">Blog</Link>
+                        <Link href="/" className="hover:text-indigo-400">Tech Blog</Link>
                     </div>
 
                     {/* Social Icons */}

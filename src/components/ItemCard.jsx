@@ -45,4 +45,3 @@ export default function ItemCard({ item }) {
     );
 }
 
-//  {item.description}

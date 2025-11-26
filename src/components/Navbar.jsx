@@ -107,7 +107,7 @@ export default function Navbar() {
                                 {isOpen && (
                                     <div className="absolute right-0 mt-2 w-48 bg-white border rounded shadow-lg">
                                         <Link href="/add-course" className="block px-4 py-2 hover:bg-gray-100">Add Course</Link>
-                                        <Link href="/manage-products" className="block px-4 py-2 hover:bg-gray-100">Manage Products</Link>
+                                        <Link href="/manage-courses" className="block px-4 py-2 hover:bg-gray-100">Manage Courses</Link>
                                         <Link href="/profile" className="block px-4 py-2 hover:bg-gray-100">Profile</Link>
                                         <button onClick={handleLogout} className="block px-4 py-2 hover:bg-gray-100">Logout</button>
                                     </div>
@@ -155,7 +155,7 @@ export default function Navbar() {
                     ) : (
                         <>
                             <Link href="/add-course" className="block px-3 py-2 rounded hover:bg-gray-100">Add Course</Link>
-                            <Link href="/manage-products" className="block px-3 py-2 rounded hover:bg-gray-100">Manage Products</Link>
+                            <Link href="/manage-courses" className="block px-3 py-2 rounded hover:bg-gray-100">Manage Courses</Link>
                             <Link href="/profile" className="block px-3 py-2 rounded hover:bg-gray-100">Profile</Link>
                             <button onClick={handleLogout} className="block px-3 py-2 rounded hover:bg-gray-100">Logout</button>
                         </>

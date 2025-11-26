@@ -1,9 +1,10 @@
 import express from "express";
 import { connectDB } from "../db.js";
+import { ObjectId } from "mongodb";
 
 const router = express.Router();
 
-// POST /user-courses -> add a new course
+// POST /user-courses -> Add A New Course API Route
 router.post("/", async (req, res) => {
     try {
         const {
@@ -34,7 +35,7 @@ router.post("/", async (req, res) => {
             price: price || "Free",
             duration: duration || "N/A",
             level: level || "Beginner",
-            image: image || "https://i.ibb.co/default-course-image.png",
+            image: image || "https://i.ibb.co.com/7t76FdWX/m7.jpg",
             category: category || "General",
             instructor: instructor || "Unknown",
             priority: priority || "Medium",
@@ -51,6 +52,57 @@ router.post("/", async (req, res) => {
     } catch (err) {
         console.error(err);
         res.status(500).json({ success: false, error: "Failed to add course" });
+    }
+});
+
+
+// Manage Courses API Routes
+
+// GET: All user added courses
+router.get("/", async (req, res) => {
+    try {
+        const db = await connectDB();
+        const courses = await db.collection("user_courses")
+            .find({})
+            .sort({ createdAt: -1 })
+            .toArray();
+
+        res.json({ success: true, data: courses });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ success: false, error: "Failed to fetch courses" });
+    }
+});
+
+// GET: Single course (View Details)
+router.get("/:id", async (req, res) => {
+    try {
+        const db = await connectDB();
+        const course = await db.collection("user_courses").findOne({
+            _id: new ObjectId(req.params.id),
+        });
+
+        if (!course) return res.status(404).json({ success: false, error: "Course not found" });
+
+        res.json({ success: true, data: course });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ success: false, error: "Failed to fetch course" });
+    }
+});
+
+// DELETE: Remove course
+router.delete("/:id", async (req, res) => {
+    try {
+        const db = await connectDB();
+        const result = await db.collection("user_courses").deleteOne({
+            _id: new ObjectId(req.params.id),
+        });
+
+        res.json({ success: true, message: "Course deleted successfully" });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ success: false, error: "Failed to delete course" });
     }
 });
 

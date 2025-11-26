@@ -14,19 +14,6 @@ export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
 
 
-  // firebase Email/password login
-  // const handleLogin = async (e) => {
-  //   e.preventDefault();
-  //   try {
-  //     const user = await loginWithEmail(email, password);
-  //     console.log("Logged in user:", user);
-  //     router.push("/"); // Redirect after login
-  //   } catch (error) {
-  //     console.error(error);
-  //     alert(error.message || "Invalid email or password");
-  //   }
-  // };
-
   // firebase Email/password login with success toast
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -61,19 +48,6 @@ export default function LoginPage() {
     }
   };
 
-
-  //firebase google login
-  // const handleGoogleLogin = async () => {
-  //   try {
-  //     const user = await loginWithGoogle();
-  //     console.log("Logged in with Google:", user);
-  //     // Redirect user after login
-  //     router.push("/");
-  //   } catch (error) {
-  //     console.error("Google login failed:", error);
-  //     alert("Google login failed. Try again.");
-  //   }
-  // };
 
   //firebase google login with success toast
   const handleGoogleLogin = async () => {

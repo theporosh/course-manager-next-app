@@ -6,8 +6,8 @@ import Image from "next/image";
 
 export default function CourseDetailsPage() {
     const router = useRouter();
-    const pathname = usePathname(); // e.g., "/courses/6"
-    const courseId = pathname.split("/").pop(); // get last segment
+    const pathname = usePathname(); 
+    const courseId = pathname.split("/").pop(); 
 
     const [course, setCourse] = useState(null);
     const [loading, setLoading] = useState(true);

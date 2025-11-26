@@ -32,40 +32,7 @@ export default function RegisterPage() {
 
 
 
-    // firebase register
-    // const handleRegister = async (e) => {
-    //     e.preventDefault();
-
-    //     // Password validation
-    //     const error = validatePassword(password);
-    //     if (error) {
-    //         setPasswordError(error);
-    //         return;
-    //     }
-    //     setPasswordError("");
-
-    //     try {
-    //         // Firebase email/password signup
-    //         const userCredential = await signup(email, password);
-    //         const user = userCredential.user;
-
-    //         await updateProfile(user, {
-    //             displayName: name,
-    //             photoURL: photo || null,
-    //         });
-
-    //         alert("Registered successfully!");
-    //         // Redirect to home page
-    //         router.push("/");
-    //     } catch (err) {
-    //         console.error("Signup failed:", err);
-    //         alert(err.message || "Registration failed");
-    //     }
-    // };
-
-
-
-    // firebase register with success toast
+ // firebase register with success toast
     const handleRegister = async (e) => {
         e.preventDefault();
 
@@ -115,20 +82,6 @@ export default function RegisterPage() {
         }
     };
 
-
-
-
-    // firebase google register
-    // const handleGoogleLogin = async () => {
-    //     try {
-    //         const user = await loginWithGoogle();
-    //         console.log("Registered with Google:", user);
-    //         router.push("/"); // redirect to home
-    //     } catch (error) {
-    //         console.error("Google signup failed:", error);
-    //         alert("Google signup failed. Try again.");
-    //     }
-    // };
 
 
     // firebase google register with success toast

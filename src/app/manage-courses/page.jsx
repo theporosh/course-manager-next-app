@@ -1,10 +1,13 @@
 "use client";
 import { useEffect, useState } from "react";
-import Link from "next/link";
 import Image from "next/image";
 import Swal from "sweetalert2";
+import { useRouter } from "next/navigation";
 
 export default function ManageCourses() {
+
+     const router = useRouter();
+
     const [courses, setCourses] = useState([]);
     const [loading, setLoading] = useState(true);
 
@@ -86,7 +89,6 @@ export default function ManageCourses() {
                                 <td className="p-3 border">
                                     <div className="relative w-24 h-14">
                                         <Image
-                                           // src={course.image ?? "/fallback.jpg"}
                                             src={getValidImage(course.image)}
                                             alt={course.title ?? "Course"}
                                             fill
@@ -99,12 +101,13 @@ export default function ManageCourses() {
                                 <td className="p-3 border">{course.level}</td>
                                 <td className="p-3 border">{course.price}</td>
                                 <td className="p-3 border flex gap-3">
-                                    <Link
-                                        href={`/courses/${course._id}`}
+                                    <button
+                                        onClick={() => router.push(`/user/${course._id}`)}
                                         className="px-3 py-1 bg-blue-600 text-white rounded-md text-sm"
                                     >
                                         View
-                                    </Link>
+                                    </button>
+                                     
 
                                     <button
                                         onClick={() => handleDelete(course._id)}

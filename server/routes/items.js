@@ -1,5 +1,4 @@
 import express from "express";
-// import { connectDB } from "../db";
 import { connectDB } from "../db.js";
 import { ObjectId } from "mongodb";
 

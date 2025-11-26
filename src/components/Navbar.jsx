@@ -19,16 +19,6 @@ export default function Navbar() {
     }, []);
 
 
-    // logout without toast
-    // const handleLogout = async () => {
-    //     try {
-    //         await logout(); // Firebase signOut
-    //         setIsOpen(false); // close dropdown
-    //         router.push("/login"); // redirect to login page
-    //     } catch (err) {
-    //         console.error("Logout failed:", err);
-    //     }
-    // };
 
     // logout with toast
     const handleLogout = async () => {

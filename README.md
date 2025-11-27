@@ -46,8 +46,8 @@ Course Manager Next.js is a simple platform to browse, view, and manage online c
 - [Axios](https://axios-http.com/) for API requests  
 
 ---
-
-## Live Link :
+## Note : It will take few minutes for load the Data dynamically in Course Catalog Section
+## Live Link : https://coursem.netlify.app/
 ## GitHub Link : https://github.com/theporosh/course-manager-next-app.git
 
 ## Render (Server Live Link) : https://render-express-deployment-oo2h.onrender.com/
